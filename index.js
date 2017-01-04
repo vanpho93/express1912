@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.listen(3000);
 
 //route
@@ -12,17 +15,23 @@ app.listen(3000);
 // });
 
 app.get('/', indexFunction);
-
+//body-parser
 app.get('/dangky', (req, res) => {
   res.send(`
     <form action="/xulydangky" method="post">
       <input type="text" name="username" placeholder="username"/>
-      <br/>
+      <br/><br/>
       <input type="password" name="password" placeholder="password"/>
+      <br/><br/>
       <input type="submit" value="Đăng nhập">
     </form>
   `);
 });
+
+app.post('/xulydangky', (req, res) => {
+  console.log(req.body);
+  res.send('Da vao route post xu ly dang ky');
+})
 
 function indexFunction(req, res){
   res.send(`<h1>Hello index route</h1>`);
