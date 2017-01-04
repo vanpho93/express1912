@@ -13,7 +13,7 @@ app.get('/tinh', (req, res) => {
 
 app.get('/list', (req, res) => {
   res.render('list', {mang: [
-    'Android', 'iOS', 'NodeJS'
+    '<p>Android</p>', '<p>iOS</p>', '<p>NodeJS</p>'
   ]});
 });
 
@@ -21,7 +21,7 @@ app.post('/xulypheptinh', (req, res) => {
   var {pheptinh, soa, sob} = req.body;
   var pt = new PhepTinh(pheptinh, soa, sob);
   res.send(pt.getOutput());
-})
+});
 
 class PhepTinh {
   constructor(pt, soa, sob){
@@ -47,3 +47,20 @@ class PhepTinh {
     return strPhepTinh + ' = ' + kq;
   }
 }
+
+app.get('/listperson', (req, res) => {
+  res.render('listperson', {mang})
+});
+
+class Person {
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+  }
+}
+
+var mang = [
+  new Person('Son', 18),
+  new Person('Huong', 30),
+  new Person('Khoa', 31)
+]
