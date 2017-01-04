@@ -4,24 +4,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.listen(3000);
 
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 app.get('/tinh', (req, res) => {
-  res.send(`
-    <form action="/xulypheptinh" method="post">
-      <input type="number" name="soa" placeholder="Số a"/>
-      <br/><br/>
-      <select name="pheptinh">
-        <option>-Chọn phép tính-<option>
-        <option value="cong">+</option>
-        <option value="tru">-</option>
-        <option value="nhan">*</option>
-        <option value="chia">%</option>
-      </select>
-      <br/><br/>
-      <input type="number" name="sob" placeholder="Số b"/>
-      <br/><br/>
-      <input type="submit" value="Tính">
-    </form>
-  `);
+  res.render('home');
 });
 
 app.post('/xulypheptinh', (req, res) => {
