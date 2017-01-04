@@ -13,9 +13,22 @@ app.listen(3000);
 
 app.get('/', indexFunction);
 
+app.get('/dangky', (req, res) => {
+  res.send(`
+    <form action="/xulydangky" method="post">
+      <input type="text" name="username" placeholder="username"/>
+      <br/>
+      <input type="password" name="password" placeholder="password"/>
+      <input type="submit" value="Đăng nhập">
+    </form>
+  `);
+});
+
 function indexFunction(req, res){
   res.send(`<h1>Hello index route</h1>`);
 }
+
+
 
 app.get('/tinh/:pheptinh/:soa/:sob', function(req, res){
   var {pheptinh, soa, sob} = req.params;
