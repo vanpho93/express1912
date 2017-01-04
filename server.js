@@ -2,13 +2,19 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
-app.listen(3000);
+app.listen(3000, () => console.log('Server started'));
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.get('/tinh', (req, res) => {
-  res.render('home');
+  res.render('home', {name: 'KhoaPham', age: 18});
+});
+
+app.get('/list', (req, res) => {
+  res.render('list', {mang: [
+    'Android', 'iOS', 'NodeJS'
+  ]});
 });
 
 app.post('/xulypheptinh', (req, res) => {
