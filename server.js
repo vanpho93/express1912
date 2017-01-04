@@ -7,9 +7,15 @@ app.listen(3000);
 app.get('/tinh', (req, res) => {
   res.send(`
     <form action="/xulypheptinh" method="post">
-      <input type="text" name="pheptinh" placeholder="Phép tính"/>
-      <br/><br/>
       <input type="number" name="soa" placeholder="Số a"/>
+      <br/><br/>
+      <select name="pheptinh">
+        <option>-Chọn phép tính-<option>
+        <option value="cong">+</option>
+        <option value="tru">-</option>
+        <option value="nhan">*</option>
+        <option value="chia">%</option>
+      </select>
       <br/><br/>
       <input type="number" name="sob" placeholder="Số b"/>
       <br/><br/>
