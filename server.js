@@ -7,15 +7,9 @@ app.listen(3000, () => console.log('Server started'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-app.get('/tinh', (req, res) => {
-  res.render('home', {name: 'KhoaPham', age: 18});
-});
+app.get('/tinh', require('./controller/tinh.js'));
 
-app.get('/list', (req, res) => {
-  res.render('list', {mang: [
-    '<p>Android</p>', '<p>iOS</p>', '<p>NodeJS</p>'
-  ]});
-});
+app.get('/list', require('./controller/list.js'));
 
 app.post('/xulypheptinh', (req, res) => {
   var {pheptinh, soa, sob} = req.body;
