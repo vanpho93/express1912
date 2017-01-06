@@ -13,7 +13,18 @@ app.post('/xulypheptinh', require('./controller/xulypheptinh.js'));
 app.get('/listperson', require('./controller/listperson.js'));
 app.get('/upload', require('./controller/getUpload'));
 
-var upload = multer( {dest: 'upload/'} );
+var storage = multer.diskStorage(
+  {
+    destination: function(req, file, cb){
+      cb(null, './upload');
+    },
+    filename: function(req, file, cb){
+      cb(null, Date.now() + file.originalname);
+    }
+  }
+);
+
+var upload = multer( {storage} );
 
 app.post('/xulyupload', upload.single('avatar'), (req, res) => {
   res.send('Da nhan duoc file');
