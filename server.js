@@ -11,9 +11,3 @@ app.get('/tinh', require('./controller/tinh.js'));
 app.get('/list', require('./controller/list.js'));
 app.post('/xulypheptinh', require('./controller/xulypheptinh.js'));
 app.get('/listperson', require('./controller/listperson.js'));
-
-var mang = [
-  new Person('Son', 18),
-  new Person('Huong', 30),
-  new Person('Khoa', 31)
-]
